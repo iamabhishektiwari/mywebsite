@@ -7,7 +7,9 @@ from django.http import JsonResponse
 import time
 import difflib
 import json
+import os
 # Create your views here.
+THIS_FOLDER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class India(View):
@@ -180,8 +182,10 @@ class Helpline(View):
 
 
 def Update(request):
-    with open('lastupdate.json') as f:
-        timefile = json.load(f)
+    my_file = os.path.join(THIS_FOLDER, 'lastupdate.json')
+    with open(my_file, 'r') as openfile:
+        timefile = json.load(openfile)
+
     last_update = timefile['lasttime']
     if((last_update+600) > time.time()):
         msg = "Data Fetched less than 10 mins ago."
