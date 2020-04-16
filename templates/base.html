@@ -1,0 +1,192 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <title>CoronaTracker|{% block title %}{% endblock %}</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+
+
+
+<style media="screen">
+  .card{
+    margin: 0!important;;
+    padding: 0!important;
+    border: 0!important;
+    box-shadow: none!important;
+  }
+  .shadow{
+    text-shadow: 2px 2px 4px #808080;
+  }
+  .shadowpurple{
+    text-shadow: 2px 2px 4px #ce93d8;
+  }
+  .shadowred{
+    text-shadow: 2px 2px 4px #ef9a9a;
+  }
+  .shadowgreen{
+    text-shadow: 2px 2px 4px #a5d6a7;
+  }
+  .shadowblue{
+      text-shadow: 2px 2px 4px #81d4fa;
+  }
+  .padding_zero{
+    padding:0px;
+    margin:0px;
+  }
+  .shadowindigo{
+    text-shadow: 2px 2px 4px #7986cb;
+  }
+  .shadowteal{
+    text-shadow: 2px 2px 4px #4db6ac;
+  }
+
+  tbody {
+      display:block;
+      height:380px;
+      overflow:auto;
+    }
+    thead, tbody tr {
+      display:table;
+      width:100%;
+      table-layout:fixed;
+    }
+
+    table {
+      width:100%;
+    }
+
+    .tabs .tab a {
+      color: black;
+      /*Custom Text Color*/
+    }
+
+    .tabs .tab a:hover {
+      color:black;
+      /*Custom Color On Hover*/
+    }
+
+    .tabs .tab a:focus.active {
+      color:black;
+      /*Custom Text Color While Active*/
+      background-color: #9fa8da;
+      /*Custom Background Color While Active*/
+    }
+    .tabs .tab a.active {
+          background-color:#e8eaf6;
+          color:#000;
+      } /*Background and text color when a tab is active*/
+
+    .tabs .indicator {
+      background-color:#9fa8da;
+      /*Custom Color Of Indicator*/
+    }
+    .widthextra{
+      width:80%
+    }
+    .pdd{
+      margin-bottom:20px;
+    }
+    .padding_top{
+      margin-top:20px;
+    }
+
+    .heightMatch{
+      height:500px;
+    }
+    .subtable{
+      height: 300px;
+    }
+    .margin_top{
+      margin-top:30px;
+    }
+</style>
+<body>
+
+  <div class="navbar">
+    <nav class="nav-wrapper indigo">
+      <div class="container">
+        <a href="{% url 'india_status' %}" class="brand-logo">CoronaTracker</a>
+        <a href="#" class="sidenav-trigger" data-target="mobile-links">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{% url 'india_status' %}">India-stats</a></li>
+          <li><a href="{% url 'states_table' %}">States-stats</a></li>
+          <!-- <li><a href="{% url 'global_status' %}">Global</a></li> -->
+          <li><a href="{% url 'helpline' %}">Test Centers</a></li>
+          <li><a href="{% url 'covid19' %}">Covid19</a></li>
+          <li><a href="{% url 'india_status' %}" class="btn white indigo-text">
+            Stay Safe
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <ul class="sidenav" id="mobile-links">
+    <li><a href="{% url 'india_status' %}">India-stats</a></li>
+    <li><a href="{% url 'states_table' %}">States-stats</a></li>
+    <!-- <li><a href="{% url 'global_status' %}">Global</a></li> -->
+    <li><a href="{% url 'helpline' %}">Test Centers</a></li>
+    <li><a href="{% url 'covid19' %}">Covid19</a></li>
+  </ul>
+
+
+
+{% block content %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+      var instances = M.AutoInit();
+      });
+  </script>
+
+
+  <!-- Counter -->
+  <script type="text/javascript">
+  $('.counter-count').each(function () {
+        $(this).prop('Counter',0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 900,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+
+  </script>
+  <!-- Counter -->
+</body>
+</html>

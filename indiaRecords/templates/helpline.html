@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% block title %}
+India-Status
+{% endblock %}
+{% load mathfilters %}
+{% load static %}
+
+{% block content %}
+
+<style media="screen">
+
+.width90{
+  width:90%;
+}
+h3{
+  color:blue;
+}
+.scroll{
+  height:650px;
+  border:solid 2px #3f51b5;
+  overflow:scroll;
+  overflow-x:hidden;
+  overflow-y:scroll;
+}
+
+
+</style>
+
+
+
+
+<div class="container">
+  <h2 class="shadow">Helpline</h2>
+  <h5>Ministry of Health & Family Welfare has provided these helpline numbers of States & Union Territories (UTs).</h5>
+
+  <div class="row">
+    <div class="col s12 shadow">
+
+    <h4> National Helpline Number </h4> <b><h3> 1075  |  1800-112-545 </h3></b>
+    <h4> Central Helpline Number </h4> <b><h3> +91-11-23978043  |  +91-11-23978046 </h3></b>
+    <h4> Central Helpline Email </h4> <b><h3> ncov2019@gmail.com </h3></b>
+
+    </div>
+
+  </div>
+
+</div>
+<div class="container width90">
+  <div class="row">
+    <div class="col s12 m6 l6">
+
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header"><h4>Test Centers<i class="material-icons">arrow_downward</i></h4></div>
+          <div class="collapsible-body scroll">
+            {% for testcenter in testcenters %}
+            <div class="s12 m12 l12">
+                <div class="card horizontal">
+                  <div class="card-stacked">
+
+                      <h5>
+                        City  - {{ testcenter.city }} <br>
+                        State - {{ testcenter.state.name }} <br>
+                        Name -{{ testcenter.nameoforganization }} <br>
+                        Phone No. - {{ testcenter.phonenumber }} <br>
+
+                      </h5>
+
+
+                    <div class="card-action">
+                    </div>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+          </div>
+        </li>
+        </ul>
+      </div>
+      <div class="col s12 m6 l6">
+
+        <ul class="collapsible">
+          <li>
+            <div class="collapsible-header"> <h4>Helpline<i class="material-icons">arrow_downward</i></h4></div>
+            <div class="collapsible-body scroll">
+              {% for testcenter in helplines %}
+              <div class="s12 m12 l12">
+                  <div class="card horizontal">
+                    <div class="card-stacked">
+
+                        <h5>
+                          City  - {{ testcenter.city }} <br>
+                          State - {{ testcenter.state.name }} <br>
+                          Name -{{ testcenter.nameoforganization }} <br>
+                          Phone No. - {{ testcenter.phonenumber }} <br>
+
+                        </h5>
+
+
+                      <div class="card-action">
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              {% endfor %}
+            </div>
+          </li>
+          </ul>
+        </div>
+
+  </div>
+
+</div>
+
+
+
+{% endblock %}

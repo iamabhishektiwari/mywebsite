@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% block title %}
+India-Status
+{% endblock %}
+{% load mathfilters %}
+{% load static %}
+
+{% block content %}
+
+<style media="screen">
+
+  .margin_right{
+    margin-right:2px;
+  }
+  .width90{
+    width:90%;
+  }
+</style>
+
+
+<div class="container widthextra">
+  <div class="heading padding_zero-fixed">
+    <h4 class="shadow">
+      Daily Counter | {{ state.name}}
+    </h4>
+    *Last updated on {{lastupdated}}
+
+
+    <div class="row">
+        <div class="col s6 m4 l2">
+          <div class="card ">
+            <div class="card-content shadowblue">
+              <span class="card-title counter-count">{{ state.confirmed }}</span>
+              <p>
+                Confirmed Cases <br>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s6 m4 l2">
+          <div class="card">
+            <div class="card-content shadowpurple">
+              <span class="card-title counter-count">{{ state.active }}</span>
+              <p>
+                Active Cases <br>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s6 m4 l2">
+          <div class="card">
+            <div class="card-content shadowgreen">
+              <span class="card-title counter-count">{{ state.recovered}}</span>
+              <p>
+                Recovered <br>
+
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s6 m4 l2">
+          <div class="card">
+            <div class="card-content shadowred">
+              <span class="card-title counter-count">{{ state.deaths}}</span>
+              <p>
+                Deaths <br>
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+
+    </div>
+    <!-- row -->
+    </div>
+    <!-- heading end -->
+
+
+
+    <div class="row">
+      <div class="col s6 m6 l6 hide-on-small-only">
+
+        <div class="card">
+        <div class="card-tabs">
+          <ul class="tabs tabs-fixed-width">
+            <li class="tab"><a class="active" href="#myChart_line">Growth Chart</a></li>
+          </ul>
+        </div>
+        <div class="card-content indigo lighten-5">
+
+          <!-- <div id="test5">Test 2</div> -->
+          <canvas id="myChart_line" width="400" height="300"></canvas>
+
+        </div>
+        </div>
+
+      </div>
+      <div class="col s12 m6 l6">
+        <div class="container width90">
+
+
+        <table class="highlight">
+          <thead>
+            <tr>
+                <th>District</th>
+                <th>Confirmed Case</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for district in districts %}
+            <tr>
+              <td>{{ district.name }}</td>
+              <td>{{ district.confirmed }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+
+
+  </div>
+
+  <div class="row">
+    <div class="col s12 l12 m12">
+      <div class="divider margin_top"> </div>
+
+      <h4 class="shadow"> Daily detected Cases | {{state.name}}</h4>
+
+    </div>
+    <div class="col s12 l12 m12 indigo lighten-5">
+      <canvas id="myChart_daily_bar"></canvas>
+    </div>
+
+  </div>
+</div>
+<!-- container -->
+
+<!-- line Chart -->
+<script>
+var ctx = document.getElementById('myChart_line').getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+      labels: {{ datelabel |safe}},
+      datasets: [{
+          label: 'Total Cases',
+          data: {{ datacumm | safe}},
+          backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+      }]
+  },
+  options: {
+      scales: {
+          yAxes: [{
+              ticks: {
+                  beginAtZero: true
+              }
+          }]
+      }
+  }
+});
+</script>
+
+<!-- line Chart  -->
+
+
+<script>
+var ctx = document.getElementById('myChart_daily_bar').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'bar',
+data: {
+    labels: {{ datelabel |safe}},
+    datasets: [{
+        label: 'No of Cases',
+        data:  {{ datadaily |safe}},
+        backgroundColor: {{barcolorlist|safe}},
+            borderColor: {{barcolorlist|safe}},
+        borderWidth: 1,
+    }]
+},
+options: {
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    }
+}
+});
+</script>
+
+
+
+{% endblock %}
