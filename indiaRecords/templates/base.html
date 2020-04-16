@@ -95,7 +95,7 @@
   <div class="navbar">
     <nav class="nav-wrapper indigo">
       <div class="container">
-        <a href="{% url 'india_status' %}" class="brand-logo">Covid-19 Tracker</a>
+        <a href="{% url 'india_status' %}" class="brand-logo">Covid19Track</a>
         <a href="#" class="sidenav-trigger" data-target="mobile-links">
           <i class="material-icons">menu</i>
         </a>
@@ -120,6 +120,7 @@
     <!-- <li><a href="{% url 'global_status' %}">Global</a></li> -->
     <li><a href="{% url 'helpline' %}">Test Centers</a></li>
     <li><a href="{% url 'covid19' %}">Covid19</a></li>
+    <li><a id="updateInvoke2" class="waves-effect btn white indigo-text">Refresh!</a></li>
   </ul>
 
   <div class="fixed-action-btn modal-trigger" href="#modal1">
@@ -153,6 +154,17 @@
 
 
   $("#updateInvoke").click(function () {
+
+    $.ajax({
+      url: '/ajax/update-data',
+      success: function (data) {
+          M.toast({html: data.message})
+      }
+    });
+
+  });
+
+  $("#updateInvoke2").click(function () {
 
     $.ajax({
       url: '/ajax/update-data',
