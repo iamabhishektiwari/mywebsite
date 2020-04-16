@@ -550,9 +550,9 @@ def updateindtimeseries(datas):
             tps = IndiaTimeSeries(date=date,
                                   dailyconfirmed = data['dailyconfirmed'],
                                   dailyrecovered = data['dailyrecovered'],
-                                  dailydeaths = data['dailydeaths'],
+                                  dailydeaths = data['dailydeceased'],
                                   totalconfirmed = data['totalconfirmed'],
-                                  totaldeaths = data['totaldeaths'],
+                                  totaldeaths = data['totaldeceased'],
                                   totalrecovered = data['totalrecovered'])
             tps.save()
     print("exiting india timeseries data update")
