@@ -12,6 +12,8 @@ urlpatterns = [
     path('global/status', gv.Global.as_view(),name='global_status'),
     path('covid19', gv.Covid19.as_view(),name='covid19'),
     path('', iv.India.as_view(),name='india_status'),
+    path('ajax/update-data', iv.Update,name='update_status'),
+    path('ajax/get-details', iv.GetdistrictResult,name='update_status'),
 
 
     # path('global/', include('globalRecords.urls')),

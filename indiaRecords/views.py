@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from django.views.generic import View
-from .updatedata import write
+from .updatedata import write, dataupdate
 import random
 from .models import IndiaTimeSeries, State, ImpParam, District,GovernmentHelpline,TestCenters,ConfirmedTimeSeriesState,RecoveredTimeSeriesState,DeathsTimeSeriesState
+from django.http import JsonResponse
+import time
+import difflib
+import json
 # Create your views here.
 
 
@@ -81,6 +85,7 @@ class India(View):
             'top5namelabel':top5namelabel,
             'barcolorlistforstate':barcolorlistforstate,
             'lastupdated':lastupdated,
+            'refresh_message':"No new update"
         }
         return render(request,self.mytemplate,context)
 
@@ -169,3 +174,71 @@ class Helpline(View):
 
     def post(self, request):
         return HttpResponse(self.unsupported)
+
+
+
+
+
+def Update(request):
+    with open('lastupdate.json') as f:
+        timefile = json.load(f)
+    last_update = timefile['lasttime']
+    if((last_update+600) > time.time()):
+        msg = "Data Fetched less than 10 mins ago."
+    else:
+        try:
+            dataupdate()
+            with open('lastupdate.json', 'w') as json_file:
+                json.dump({"lasttime": time.time()}, json_file)
+            msg = "Data Updated now"
+        except Exception as e:
+            print(e)
+            msg = "Scraping sources..."
+    data = {
+        "message":msg,
+    }
+    return JsonResponse(data)
+
+
+
+def GetdistrictResult(request):
+    exactflag = False
+    foundflag = False
+    suggestflag = False
+    dist_name = ''
+    dist_conf = ''
+    dist_state = ''
+    dist_state_count = ''
+
+    dstnme = request.GET.get('district_name', None)
+    dstlist = []
+    districts = District.objects.all()
+    for dd in districts:
+        dstlist.append(dd.name)
+
+    closematches = difflib.get_close_matches(dstnme, dstlist);
+    if(len(closematches)>0):
+        foundflag = True
+        obj = District.objects.all().filter(name=closematches[0])[0]
+        dist_name = obj.name
+        dist_conf = obj.confirmed
+        dist_state = obj.state.name
+        dist_state_count = obj.state.confirmed
+        if(closematches[0].lower()==dstnme.lower()):
+            exactflag = True
+        else:
+            exactflag = False
+
+    else:
+        foundflag = False
+
+
+    data = {
+    'foundflag':foundflag,
+    'exactflag':exactflag,
+    'dist_name':dist_name,
+    'dist_conf':dist_conf,
+    'dist_state':dist_state,
+    'dist_state_count':dist_state_count
+    }
+    return JsonResponse(data)

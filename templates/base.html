@@ -125,9 +125,9 @@
           <!-- <li><a href="{% url 'global_status' %}">Global</a></li> -->
           <li><a href="{% url 'helpline' %}">Test Centers</a></li>
           <li><a href="{% url 'covid19' %}">Covid19</a></li>
-          <li><a href="{% url 'india_status' %}" class="btn white indigo-text">
-            Stay Safe
-            </a>
+          <li>
+            <a id="updateInvoke" class="waves-effect btn white indigo-text">Refresh!</a>
+
           </li>
         </ul>
       </div>
@@ -142,19 +142,95 @@
     <li><a href="{% url 'covid19' %}">Covid19</a></li>
   </ul>
 
+  <div class="fixed-action-btn modal-trigger" href="#modal1">
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">search</i>
+  </a>
+</div>
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+      <h5 id="det123">Find details of your area</h5>
+      <div id="inp123" class="input-field col s6">
+          <input placeholder="Varanasi" id="district_name" type="text" class="validate">
+          <label for="first_name">District Name</label>
+      </div>
+      <a id="finddistrict" class="waves-effect btn white indigo-text">Find!</a>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">close</a>
+    </div>
+    <div id="result">
+
+    </div>
+  </div>
+
+
+
+
+
+<script type="text/javascript">
+
+
+  $("#updateInvoke").click(function () {
+
+    $.ajax({
+      url: '/ajax/update-data',
+      success: function (data) {
+          M.toast({html: data.message})
+      }
+    });
+
+  });
+
+
+
+  $("#finddistrict").click(function () {
+    var district = $("#district_name").val();
+    if(district){
+      $.ajax({
+        url: '/ajax/get-details',
+        data: {
+          'district_name': district
+        },
+        dataType: 'json',
+        success: function (data) {
+          if(data.foundflag){
+            if(data.exactflag){
+              document.getElementById("result").innerHTML =
+                  "<h5>Name-"+data.dist_name+"</h5>"+
+                  "<h5>Count-"+data.dist_conf+"</h5>"+
+                  "<h5>State Name -"+data.dist_state+"</h5>"+
+                  "<h5>State count -"+data.dist_state_count+"</h5>"
+            }
+            else{
+              document.getElementById("result").innerHTML =
+                  "<h5 class='red-text'>Not found, Suggestion</h5>"+
+                  "<h5>Name-"+data.dist_name+"</h5>"+
+                  "<h5>Count-"+data.dist_conf+"</h5>"+
+                  "<h5>State Name -"+data.dist_state+"</h5>"+
+                  "<h5>State count -"+data.dist_state_count+"</h5>"
+            }
+          }
+          else{
+            document.getElementById("result").innerHTML =
+                "<h5 class='red-text'>Not Found</h5>";
+          }
+        }
+      });
+    }
+    else{
+      document.getElementById("result").innerHTML =
+          "<h5 class='red-text'>Enter some value</h5>";
+    }
+  });
+</script>
+
+
 
 
 {% block content %}
 {% endblock %}
-
-
-
-
-
-
-
-
-
 
 
 
