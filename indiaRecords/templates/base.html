@@ -90,8 +90,8 @@
       margin-top:30px;
     }
     .modal {
-      width: 55% !important ;
-      height: 55% !important ;
+      width: 60% !important ;
+      height: 50% !important ;
      }
 </style>
 <body>
@@ -146,9 +146,6 @@
     <div id="result">
 
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect btn white indigo-text">close</a>
-    </div>
   </div>
 
 
@@ -195,30 +192,30 @@
           if(data.foundflag){
             if(data.exactflag){
               document.getElementById("result").innerHTML =
-                  "<h5>Name-"+data.dist_name+"</h5>"+
-                  "<h5>Count-"+data.dist_conf+"</h5>"+
-                  "<h5>State Name -"+data.dist_state+"</h5>"+
-                  "<h5>State count -"+data.dist_state_count+"</h5>"
+                  "<h6>Name-"+data.dist_name+"</h6>"+
+                  "<h6>Count-"+data.dist_conf+"</h6>"+
+                  "<h6>State Name -"+data.dist_state+"</h6>"+
+                  "<h6>State count -"+data.dist_state_count+"</h6>"
             }
             else{
               document.getElementById("result").innerHTML =
-                  "<h5 class='red-text'>Not found, Suggestion</h5>"+
-                  "<h5>Name-"+data.dist_name+"</h5>"+
-                  "<h5>Count-"+data.dist_conf+"</h5>"+
-                  "<h5>State Name -"+data.dist_state+"</h5>"+
-                  "<h5>State count -"+data.dist_state_count+"</h5>"
+                  "<h6 class='red-text'>Not found, Suggestion</h6>"+
+                  "<h6>Name-"+data.dist_name+"</h6>"+
+                  "<h6>Count-"+data.dist_conf+"</h6>"+
+                  "<h6>State Name -"+data.dist_state+"</h6>"+
+                  "<h6>State count -"+data.dist_state_count+"</h6>"
             }
           }
           else{
             document.getElementById("result").innerHTML =
-                "<h5 class='red-text'>Not Found</h5>";
+                "<h6 class='red-text'>Not Found</h6>";
           }
         }
       });
     }
     else{
       document.getElementById("result").innerHTML =
-          "<h5 class='red-text'>Enter some value</h5>";
+          "<h6 class='red-text'>Enter some value</h6>";
     }
   });
 </script>
