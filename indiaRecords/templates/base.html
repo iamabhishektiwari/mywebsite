@@ -10,44 +10,24 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-  <title>CoronaTracker|{% block title %}{% endblock %}</title>
+  <title>Covid-19|{% block title %}{% endblock %}</title>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
 </head>
 
 
 
 <style media="screen">
+
   .card{
     margin: 0!important;;
     padding: 0!important;
     border: 0!important;
     box-shadow: none!important;
-  }
-  .shadow{
-    text-shadow: 2px 2px 4px #808080;
-  }
-  .shadowpurple{
-    text-shadow: 2px 2px 4px #ce93d8;
-  }
-  .shadowred{
-    text-shadow: 2px 2px 4px #ef9a9a;
-  }
-  .shadowgreen{
-    text-shadow: 2px 2px 4px #a5d6a7;
-  }
-  .shadowblue{
-      text-shadow: 2px 2px 4px #81d4fa;
+    font-weight: bold;
   }
   .padding_zero{
     padding:0px;
     margin:0px;
-  }
-  .shadowindigo{
-    text-shadow: 2px 2px 4px #7986cb;
-  }
-  .shadowteal{
-    text-shadow: 2px 2px 4px #4db6ac;
   }
 
   tbody {
@@ -115,7 +95,7 @@
   <div class="navbar">
     <nav class="nav-wrapper indigo">
       <div class="container">
-        <a href="{% url 'india_status' %}" class="brand-logo">CoronaTracker</a>
+        <a href="{% url 'india_status' %}" class="brand-logo">Covid-19 Tracker</a>
         <a href="#" class="sidenav-trigger" data-target="mobile-links">
           <i class="material-icons">menu</i>
         </a>
@@ -231,6 +211,7 @@
 
 {% block content %}
 {% endblock %}
+
 
 
 

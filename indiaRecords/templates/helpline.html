@@ -20,6 +20,9 @@ India-Helpline
   overflow-x:hidden;
   overflow-y:scroll;
 }
+.pdd20{
+  padding-left:20px;
+}
 
 
 </style>
@@ -30,14 +33,18 @@ India-Helpline
 <div class="container">
   <div class="row">
     <div class="col s12 l12 m12">
-      <h3 class="indigo-text shadow">Helplines</h3>
+      <h4 class="indigo-text shadow">Helplines</h4>
       <h6>Ministry of Health & Family Welfare has provided these helpline numbers of States & Union Territories (UTs).</h6>
     </div>
     <div class="col s12 shadow">
 
-    <h5> National Helpline Number </h5> <b><h4 class="indigo-text"> 1075  |  1800-112-545 </h4></b>
-    <h5> Central Helpline Number </h5> <b><h4 class="indigo-text"> +91-11-23978043  |  +91-11-23978046 </h4></b>
-    <h5> Central Helpline Email </h5> <b><h4 class="indigo-text"> ncov2019@gmail.com </h4></b>
+    <h4 class="waves-effect btn white indigo-text btn-large" > National Helpline Number </h4>
+    <b>
+    <h5 class="indigo-text pdd20"> 1075  |  1800-112-545 </h5></b>
+    <h5 class="waves-effect btn white indigo-text btn-large"> Central Helpline Number </h5> <b>
+      <h5 class="indigo-text pdd20"> +91-11-23978043  |  +91-11-23978046 </h5></b>
+    <h5 class="waves-effect btn white indigo-text btn-large"> Central Helpline Email </h5> <b>
+      <h5 class="indigo-text pdd20"> ncov2019@gmail.com </h5></b>
 
     </div>
 
@@ -50,20 +57,20 @@ India-Helpline
 
       <ul class="collapsible">
         <li>
-          <div class="collapsible-header"><h4>Test Centers<i class="material-icons">arrow_downward</i></h4></div>
+          <div class="collapsible-header"><h5 class="indigo-text">Test Centers<i class="material-icons">arrow_downward</i></h5></div>
           <div class="collapsible-body scroll">
             {% for testcenter in testcenters %}
             <div class="s12 m12 l12">
                 <div class="card horizontal">
                   <div class="card-stacked">
 
-                      <h5>
+                      <h6>
                         City  - {{ testcenter.city }} <br>
                         State - {{ testcenter.state.name }} <br>
                         Name -{{ testcenter.nameoforganization }} <br>
                         Phone No. - {{ testcenter.phonenumber }} <br>
 
-                      </h5>
+                      </h6>
 
 
                     <div class="card-action">
@@ -80,20 +87,20 @@ India-Helpline
 
         <ul class="collapsible">
           <li>
-            <div class="collapsible-header"> <h4>Helpline<i class="material-icons">arrow_downward</i></h4></div>
+            <div class="collapsible-header"> <h5 class="indigo-text">Helpline<i class="material-icons">arrow_downward</i></h5></div>
             <div class="collapsible-body scroll">
               {% for testcenter in helplines %}
               <div class="s12 m12 l12">
                   <div class="card horizontal">
                     <div class="card-stacked">
 
-                        <h5>
+                        <h6>
                           City  - {{ testcenter.city }} <br>
                           State - {{ testcenter.state.name }} <br>
                           Name -{{ testcenter.nameoforganization }} <br>
                           Phone No. - {{ testcenter.phonenumber }} <br>
 
-                        </h5>
+                        </h6>
 
 
                       <div class="card-action">

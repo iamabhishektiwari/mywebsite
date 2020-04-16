@@ -41,7 +41,7 @@ class India(View):
             indiatimeserieslabel.append(tcs.date)
             indiatimeseriesdailydata.append(tcs.dailyconfirmed)
             # clr = "rgba("+str(int(tcs.dailyconfirmed/255)*10+100)+", 30, 30, 0.2)"
-            barcolorlist.append('rgba(255, 99, 132, 0.2)',)
+            barcolorlist.append('rgba(255, 99, 132, 8)',)
             inditimeseriescummdata.append(tcs.totalconfirmed)
 
 
@@ -50,7 +50,7 @@ class India(View):
             statenameslabel.append(st.name)
             statecasedata.append(st.confirmed)
             mapdatalist.append([st.name,st.confirmed])
-            clr = 'rgba('+str(random.randint(1, 10)*25)+','+str(random.randint(1, 10)*25)+','+str(random.randint(1, 10)*25)+','+'0.4';
+            clr = 'rgba('+str(random.randint(1, 10)*25)+','+str(random.randint(1, 10)*25)+','+str(random.randint(1, 10)*25)+','+'8';
             barcolorlistforstate.append(clr)
 
 

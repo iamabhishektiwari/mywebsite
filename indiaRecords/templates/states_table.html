@@ -34,10 +34,24 @@ Indian-States
 </style>
 <div class="custom">
   <div class="container padding_down shadow">
-    <h3> All States and UTs Overview </h3>
-    #Click on state name for detailed view
+    <div class="row">
+      <h3> All States and UTs Overview </h3>
+      <div class="col s12">
+        #Click on state name for detailed view
+      </div>
+      <div class="col s4 l2 m3">
+        <div class="progress green lighten-4">
+            <div class="determinate green darken-2" style="width: 40%"> represent recovery rate</div>
+        </div>
+      </div>
+      <div class="col s8 l10 m9">
+        Represents recovery rate
+      </div>
+
+    </div>
+
   </div>
-  <div class="container cuswidth scroll">
+  <div class="container cuswidth">
   <div class="row">
 
     {% for state,districts in statedata.items %}
@@ -62,7 +76,7 @@ Indian-States
         <li>
           <div class="collapsible-header">
 
-            <div class="row padding_zero">
+            <!-- <div class="row padding_zero"> -->
 
               <div class="col s4 m4 l4  padding_zero">
                 Total Cases
@@ -84,7 +98,7 @@ Indian-States
                   {{ state.deaths }}
                 </div>
               </div>
-            </div>
+            <!-- </div> -->
 
           </div>
           <div class="collapsible-body">
