@@ -91,8 +91,9 @@
       margin-top:30px;
     }
     .modal {
-      width: 60% !important ;
-      height: 50% !important ;
+      width: fit-content;
+      height: fit-content;
+      padding: 10px;
      }
      .deathtext{
        color:#b71c1c;
@@ -142,20 +143,25 @@
       <h5 id="det123">Find details of your area</h5>
     </div>
     <div class="container">
-      <div id="inp123" class="input-field col s2">
-          <input placeholder="Varanasi" id="district_name" type="text" class="validate">
+      <div class="row">
+        <div id="inp123" class="input-field col s12 l12 m12">
+            <input placeholder="Varanasi" id="district_name" type="text" class="validate">
+        </div>
+        <div class="col s12">
+          <div class="container right">
+
+          </div>
+        </div>
+      <div class="col" id="result">
+
       </div>
-      <a id="finddistrict" class="waves-effect btn white indigo-text">Find!</a>
+      </div>
     </div>
-    <div id="result">
+    <div class="modal-footer">
+        <a id="finddistrict" class="waves-effect btn white indigo-text">Find!</a>
+    </div>
 
-    </div>
   </div>
-
-
-
-
-
 <script type="text/javascript">
 
 
@@ -197,17 +203,17 @@
             if(data.exactflag){
               document.getElementById("result").innerHTML =
                   "<h6>Name-"+data.dist_name+"</h6>"+
-                  "<h6>Count-"+data.dist_conf+"</h6>"+
+                  "<h6>Case-count-"+data.dist_conf+"</h6>"+
                   "<h6>State Name -"+data.dist_state+"</h6>"+
-                  "<h6>State count -"+data.dist_state_count+"</h6>"
+                  "<h6>State Case-count -"+data.dist_state_count+"</h6>"
             }
             else{
               document.getElementById("result").innerHTML =
                   "<h6 class='red-text'>Not found, Suggestion</h6>"+
                   "<h6>Name-"+data.dist_name+"</h6>"+
-                  "<h6>Count-"+data.dist_conf+"</h6>"+
+                  "<h6>Case-count-"+data.dist_conf+"</h6>"+
                   "<h6>State Name -"+data.dist_state+"</h6>"+
-                  "<h6>State count -"+data.dist_state_count+"</h6>"
+                  "<h6>State Case-count -"+data.dist_state_count+"</h6>"
             }
           }
           else{
