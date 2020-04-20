@@ -48,11 +48,10 @@ class India(View):
         totalsampletested = ImpParam.objects.get(key="totalsampletested").value
         lastupdated = ImpParam.objects.get(key="indlastupdatetime").value
 
-        statedata = State.objects.all().filter(confirmed__gte=10).order_by('-confirmed')
+        statedata = State.objects.all().filter(confirmed__gte=1).order_by('-confirmed')
 
         indiatimeseries = IndiaTimeSeries.objects.all()
         last24hr = indiatimeseries[len(indiatimeseries)-1].dailyconfirmed
-        print(last24hr)
         indiatimeserieslabel = []
         indiatimeseriesdailydata = []
         inditimeseriescummdata = []

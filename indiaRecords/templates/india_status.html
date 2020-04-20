@@ -47,14 +47,14 @@ geochart.draw(data, opts);
     <h4 class="shadow">
       Daily Counter | India
     </h4>
-    *Last updated on {{ lastupdated }}
+    <small>*Last updated on {{ lastupdated }}</small>
 
     <div class="row">
 
       <div class="col s6 m4 l2">
         <div class="card">
           <div class="card-content shadowindigo">
-            <span class="card-title counter-count"> {{ last24hr }}</span>
+            <span class="card-title counter-count red-text"> {{ last24hr }}</span>
             <p>
               +Last 24hr <br>
             </p>
@@ -67,7 +67,7 @@ geochart.draw(data, opts);
         <div class="col s6 m4 l2">
           <div class="card ">
             <div class="card-content shadowblue">
-              <span class="card-title counter-count">{{ indconfirmed }}</span>
+              <span class="card-title counter-count purple-text">{{ indconfirmed }}</span>
               <p>
                 Total Cases <br>
               </p>
@@ -79,7 +79,7 @@ geochart.draw(data, opts);
         <div class="col s6 m4 l2">
           <div class="card">
             <div class="card-content shadowpurple">
-              <span class="card-title counter-count">{{ indactive }}</span>
+              <span class="card-title counter-count indigo-text">{{ indactive }}</span>
               <p>
                 Active Cases <br>
 
@@ -92,7 +92,7 @@ geochart.draw(data, opts);
         <div class="col s6 m4 l2">
           <div class="card">
             <div class="card-content shadowgreen">
-              <span class="card-title counter-count">{{ indrecovered }}</span>
+              <span class="card-title counter-count green-text">{{ indrecovered }}</span>
               <p>
                 Recovered <br>
 
@@ -105,7 +105,7 @@ geochart.draw(data, opts);
         <div class="col s6 m4 l2">
           <div class="card">
             <div class="card-content shadowred">
-              <span class="card-title counter-count">{{ inddeaths }}</span>
+              <span class="card-title counter-count deathtext">{{ inddeaths }}</span>
               <p>
                 Deaths <br>
 
@@ -118,7 +118,7 @@ geochart.draw(data, opts);
         <div class="col s6 m4 l2">
           <div class="card ">
             <div class="card-content shadowteal">
-              <span class="card-title counter-count">{{ totalsampletested }}</span>
+              <span class="card-title counter-count blue-text">{{ totalsampletested }}</span>
               <p>
                 Sample Tested <br>
 
@@ -157,7 +157,7 @@ geochart.draw(data, opts);
 
       </div>
       <div class="col s12 m6 l7">
-        #Click on states for detail view
+      <small>  #Click on states for detail view </small>
         <table class="highlight">
           <thead>
             <tr>
@@ -174,8 +174,8 @@ geochart.draw(data, opts);
 
               <td> <a href="{% url 'state_status' state.statecode %}"> {{ state.name }} </a>  </td>
               <td class="centeralign"> {{ state.confirmed }}  </td>
-              <td class="centeralign"> {{ state.recovered }}  </td>
-              <td class="centeralign"> {{ state.deaths }}  </td>
+              <td class="centeralign"> {{ state.recovered }} <small class="green-text">({{ state.recovered|div:state.confirmed|mul:100|floatformat:2 }}%)</small> </td>
+              <td class="centeralign"> {{ state.deaths }} <small class="red-text">({{ state.deaths|div:state.confirmed|mul:100|floatformat:2 }}%) </td>
 
             </tr>
             {% endfor %}
@@ -214,7 +214,7 @@ geochart.draw(data, opts);
         <div class="divider margin_top"> </div>
 
         <h4 class="shadow"> Five Worst Affected States </h4>
-        #Length of bar represent the number of cases
+      <small>  #Length of bar represent the number of cases </small>
       </div>
 
 
@@ -226,7 +226,7 @@ geochart.draw(data, opts);
 
         </div>
         <div class="col s12 m6 l7 padding_top">
-          #Progress bar represent recovery rate
+        <small>  #Progress bar represent recovery rate </small>
           <ul class="collapsible popout">
 
 
@@ -307,7 +307,7 @@ geochart.draw(data, opts);
       <div class="divider margin_top"> </div>
 
       <h4 class="shadow"> Cases in States </h4>
-      #Height of bar represent the number of cases
+    <small>  #Height of bar represent the number of cases  </small>
 
     </div>
 
@@ -327,7 +327,7 @@ geochart.draw(data, opts);
       <div class="divider margin_top"> </div>
 
       <h4 class="shadow"> Representation on Map </h4>
-      #Darker shade represent more no of cases
+    <small> #Darker shade represent more no of cases  </small>
 
     </div>
 
