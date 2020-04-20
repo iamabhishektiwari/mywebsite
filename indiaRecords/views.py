@@ -30,6 +30,8 @@ class India(View):
         statedata = State.objects.all().filter(confirmed__gte=10).order_by('-confirmed')
 
         indiatimeseries = IndiaTimeSeries.objects.all()
+        last24hr = indiatimeseries[len(indiatimeseries)-1].dailyconfirmed
+        print(last24hr)
         indiatimeserieslabel = []
         indiatimeseriesdailydata = []
         inditimeseriescummdata = []
@@ -87,7 +89,8 @@ class India(View):
             'top5namelabel':top5namelabel,
             'barcolorlistforstate':barcolorlistforstate,
             'lastupdated':lastupdated,
-            'refresh_message':"No new update"
+            'refresh_message':"No new update",
+            'last24hr':last24hr,
         }
         return render(request,self.mytemplate,context)
 

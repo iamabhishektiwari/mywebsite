@@ -50,6 +50,20 @@ geochart.draw(data, opts);
     *Last updated on {{ lastupdated }}
 
     <div class="row">
+
+      <div class="col s6 m4 l2">
+        <div class="card">
+          <div class="card-content shadowindigo">
+            <span class="card-title counter-count"> {{ last24hr }}</span>
+            <p>
+              +Last 24hr <br>
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+
         <div class="col s6 m4 l2">
           <div class="card ">
             <div class="card-content shadowblue">
@@ -102,18 +116,6 @@ geochart.draw(data, opts);
 
 
         <div class="col s6 m4 l2">
-          <div class="card">
-            <div class="card-content shadowindigo">
-              <span class="card-title counter-count">{{ totalindividualtested }}</span>
-              <p>
-                Individuals Tested <br>
-              </p>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col s6 m4 l2">
           <div class="card ">
             <div class="card-content shadowteal">
               <span class="card-title counter-count">{{ totalsampletested }}</span>
@@ -146,9 +148,9 @@ geochart.draw(data, opts);
         </div>
         <div class="card-content ">
           <!-- <div id="test4">Test 1</div> -->
-          <canvas id="myChart_bar" width="400" height="300"></canvas>
+          <canvas id="myChart_bar" width="400" height="400"></canvas>
           <!-- <div id="test5">Test 2</div> -->
-          <canvas id="myChart_line" width="400" height="300"></canvas>
+          <canvas id="myChart_line" width="400" height="400"></canvas>
 
         </div>
         </div>
@@ -182,6 +184,32 @@ geochart.draw(data, opts);
         <div class="divider pdd"></div>
       </div>
 
+
+
+
+      <div class="col hide-on-med-and-up s12">
+
+        <div class="card">
+        <div class="card-tabs">
+          <ul class="tabs tabs-fixed-width">
+            <li class="tab"><a href="#myChart_line1">Growth Chart</a></li>
+            <li class="tab"><a class="active" href="#myChart_bar1">Daily Cases</a></li>
+
+          </ul>
+        </div>
+        <div class="card-content ">
+          <!-- <div id="test4">Test 1</div> -->
+          <canvas id="myChart_line1" width="400" height="400"></canvas>
+          <!-- <div id="test5">Test 2</div> -->
+          <canvas id="myChart_bar1" width="400" height="400"></canvas>
+
+        </div>
+        </div>
+
+      </div>
+
+
+
       <div class="col s12 l12 m12">
         <div class="divider margin_top"> </div>
 
@@ -190,18 +218,11 @@ geochart.draw(data, opts);
       </div>
 
 
-
-
-
-
-
-
-
       <div class="box">
 
       <div class="row">
         <div class="col s12 m6 l5 padding_top heightMatch">
-          <canvas id="myChart_horizontal_bar" style="width:100%; height:100%;">Test 2</canvas>
+          <canvas id="myChart_horizontal_bar" width="400" height="400">Test 2</canvas>
 
         </div>
         <div class="col s12 m6 l7 padding_top">
@@ -290,9 +311,15 @@ geochart.draw(data, opts);
 
     </div>
 
-    <div class="col s12 l12 m12 ">
-      <canvas id="myChart_state_bar" style="margin: 1em"> </canvas>
+    <div class="col s12 l12 m12 hide-on-small-only">
+      <canvas id="myChart_state_bar" width="100%" height="40%"> </canvas>
     </div>
+
+
+    <div class="col s12 hide-on-med-and-up">
+      <canvas id="myChart_state_bar1" width="400" height="400" style="margin: 1em"> </canvas>
+    </div>
+
 
   </div>
   <div class="row">
@@ -338,6 +365,15 @@ var myChart = new Chart(ctx, {
 });
 </script>
 <!-- bar Chart -->
+
+
+
+
+
+
+
+
+
 
 
 
@@ -462,6 +498,147 @@ options: {
 
 
 <!-- chart for all states -->
+
+
+
+
+
+chart for all states  -->
+
+
+<script>
+var ctx = document.getElementById('myChart_state_bar1').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'bar',
+data: {
+    labels: {{ statenameslabel |safe}},
+    datasets: [{
+        label: 'No of Cases',
+        data:  {{ statecasedata |safe}},
+        backgroundColor: {{barcolorlistforstate|safe}},
+            borderColor: {{barcolorlistforstate|safe}},
+        borderWidth: 1,
+    }]
+},
+options: {
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    }
+}
+});
+</script>
+
+
+
+<!-- chart for all states -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- bar chart -->
+<script>
+var ctx = document.getElementById('myChart_bar1').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{ indiatimeserieslabel |safe}},
+        datasets: [{
+            label: 'No of Daily cases',
+            data: {{ indiatimeseriesdailydata|safe }},
+            backgroundColor: {{ barcolorlist |safe}},
+            borderColor: {{ barcolorlist |safe}},
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+<!-- bar Chart -->
+
+
+<!-- line Chart -->
+<script>
+var ctx = document.getElementById('myChart_line1').getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+      labels: {{ indiatimeserieslabel |safe}},
+      datasets: [{
+          label: 'Total Cases',
+          data: {{inditimeseriescummdata | safe}},
+          backgroundColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+          ],
+          borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+      }]
+  },
+  options: {
+      scales: {
+          yAxes: [{
+              ticks: {
+                  beginAtZero: true
+              }
+          }]
+      }
+  }
+});
+</script>
+
+<!-- line Chart  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
