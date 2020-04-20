@@ -14,6 +14,7 @@ urlpatterns = [
     path('', iv.India.as_view(),name='india_status'),
     path('ajax/update-data', iv.Update,name='update_status'),
     path('ajax/get-details', iv.GetdistrictResult,name='update_status'),
+    path('sitemap.xml', iv.Sitemap.as_view(),name='sitemap'),
 
 
     # path('global/', include('globalRecords.urls')),
