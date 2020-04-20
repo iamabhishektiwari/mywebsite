@@ -616,3 +616,5 @@ def dataupdate():
     edit2()
     edit3()
     print("api call end")
+
+dataupdate()
