@@ -27,6 +27,18 @@ class Sitemap(View):
         return HttpResponse(self.unsupported)
 
 
+class Bingsitemap(View):
+    mytemplate = 'BingSiteAuth.xml'
+    unsupported = 'Unsupported operation'
+    def get(self, request):
+
+        context = {
+            'message':"Success",
+        }
+        return render(request,self.mytemplate,context)
+
+    def post(self, request):
+        return HttpResponse(self.unsupported)
 
 
 
