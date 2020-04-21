@@ -51,18 +51,6 @@ geochart.draw(data, opts);
 
     <div class="row">
 
-      <div class="col s6 m4 l2">
-        <div class="card">
-          <div class="card-content shadowindigo">
-            <span class="card-title counter-count red-text"> {{ last24hr }}</span>
-            <p>
-              +Last 24hr <br>
-            </p>
-          </div>
-        </div>
-      </div>
-
-
 
         <div class="col s6 m4 l2">
           <div class="card ">
@@ -116,11 +104,23 @@ geochart.draw(data, opts);
 
 
         <div class="col s6 m4 l2">
+          <div class="card">
+            <div class="card-content shadowindigo">
+              <span class="card-title red-text"> {{ inddeaths|div:indconfirmed|mul:100|floatformat:2 }}%</span>
+              <p>
+                Mortality rate <br>
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col s6 m4 l2">
           <div class="card ">
             <div class="card-content shadowteal">
-              <span class="card-title counter-count blue-text">{{ totalsampletested }}</span>
+              <span class="card-title blue-text">{{ indrecovered|div:indconfirmed|mul:100|floatformat:2 }}%</span>
               <p>
-                Sample Tested <br>
+                Recovery Rate <br>
 
               </p>
             </div>
