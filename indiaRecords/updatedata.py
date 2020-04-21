@@ -616,3 +616,4 @@ def dataupdate():
     edit3()
 
 #dataupdate()
+# write()
