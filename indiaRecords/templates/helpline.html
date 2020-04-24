@@ -55,17 +55,22 @@ India-Helpline
   <div class="row">
     <div class="col s12 m6 l6">
 
-      <ul class="collapsible">
+      <ul class="collapsible" id="test">
         <li>
           <div class="collapsible-header"><h5 class="indigo-text">Test Centers<i class="material-icons">arrow_downward</i></h5></div>
           <div class="collapsible-body scroll">
+          <div class="row padding_zero">
+            <div class="col s6">
+              <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for city.." title="Type in a city">
+           </div>
+         </div>
             {% for testcenter in testcenters %}
             <div class="s12 m12 l12">
                 <div class="card horizontal">
                   <div class="card-stacked">
 
                       <h6>
-                        City  - {{ testcenter.city }} <br>
+                        City <a class="black-text" href=""> - {{ testcenter.city }} </a> <br>
                         State - {{ testcenter.state.name }} <br>
                         Name -{{ testcenter.nameoforganization }} <br>
                         Phone No. - {{ testcenter.phonenumber }} <br>
@@ -85,17 +90,22 @@ India-Helpline
       </div>
       <div class="col s12 m6 l6">
 
-        <ul class="collapsible">
+        <ul class="collapsible" id="test2">
           <li>
             <div class="collapsible-header"> <h5 class="indigo-text">Helpline<i class="material-icons">arrow_downward</i></h5></div>
             <div class="collapsible-body scroll">
+              <div class="row padding_zero">
+            <div class="col s6">
+              <input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Search for city.." title="Type in a city">
+           </div>
+         </div>
               {% for testcenter in helplines %}
               <div class="s12 m12 l12">
                   <div class="card horizontal">
                     <div class="card-stacked">
 
                         <h6>
-                          City  - {{ testcenter.city }} <br>
+                          City <a class = "black-text" href="">  - {{ testcenter.city }}</a> <br>
                           State - {{ testcenter.state.name }} <br>
                           Name -{{ testcenter.nameoforganization }} <br>
                           Phone No. - {{ testcenter.phonenumber }} <br>
@@ -117,6 +127,46 @@ India-Helpline
   </div>
 
 </div>
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("test");
+    li = ul.getElementsByTagName("h6");
+
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+<script>
+function myFunction2() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput2");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("test2");
+    li = ul.getElementsByTagName("h6");
+    
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
 
 
 

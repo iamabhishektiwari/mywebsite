@@ -121,8 +121,14 @@
         </div>
 
       </div>
-      <div class="col s12 m6 l6">
+      
         <div class="container width90">
+          <div class="col s12 m6 l6">
+        <div class="row padding_zero">
+         <div class="col s6">
+           <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for District.." title="Type in a district">
+         </div>
+       </div>
 
 
         <table class="highlight">
@@ -133,10 +139,10 @@
             </tr>
           </thead>
 
-          <tbody>
+          <tbody id="district">
             {% for district in districts %}
             <tr>
-              <td>{{ district.name }}</td>
+              <td><a href="#">{{ district.name }}</a></td>
               <td>{{ district.confirmed }}</td>
             </tr>
             {% endfor %}
@@ -267,6 +273,26 @@ options: {
     }
 }
 });
+</script>
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("district");
+    li = ul.getElementsByTagName("tr");
+
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
 </script>
 
 
