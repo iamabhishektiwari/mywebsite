@@ -42,6 +42,7 @@ geochart.draw(data, opts);
 
 
 
+
 <div class="container widthextra">
   <div class="heading padding_zero-fixed">
     <h4 class="shadow">
@@ -156,7 +157,22 @@ geochart.draw(data, opts);
 
       </div>
       <div class="col s12 m6 l7">
-      <small>  #Click on states for detail view </small>
+      
+       <div class="row padding_zero">
+         <div class="col s6">
+           <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for State.." title="Type in a State">
+         </div>
+       </div>
+       
+            
+      
+         
+       
+     
+
+
+
+
         <table class="highlight">
           <thead>
             <tr>
@@ -167,14 +183,14 @@ geochart.draw(data, opts);
             </tr>
           </thead>
 
-          <tbody>
+          <tbody id="state">
             {% for state in statedata %}
             <tr>
 
               <td> <a href="{% url 'state_status' state.statecode %}"> {{ state.name }} </a>  </td>
               <td class="centeralign"> {{ state.confirmed }}  </td>
               <td class="centeralign"> {{ state.recovered }} <small class="green-text">({{ state.recovered|div:state.confirmed|mul:100|floatformat:2 }}%)</small> </td>
-              <td class="centeralign"> {{ state.deaths }} <small class="red-text">({{ state.deaths|div:state.confirmed|mul:100|floatformat:2 }}%) </td>
+              <td class="centeralign"> {{ state.deaths }} <small class="red-text">({{ state.deaths|div:state.confirmed|mul:100|floatformat:2 }}%)</small> </td>
 
             </tr>
             {% endfor %}
@@ -616,6 +632,25 @@ var myChart = new Chart(ctx, {
 </script>
 
 <!-- line Chart  -->
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("state");
+    li = ul.getElementsByTagName("tr");
+
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
 
 
 
