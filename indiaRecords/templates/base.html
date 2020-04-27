@@ -98,6 +98,15 @@
      .deathtext{
        color:#b71c1c;
      }
+
+     body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+}
 </style>
 <body>
 
@@ -109,11 +118,11 @@
           <i class="material-icons">menu</i>
         </a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="{% url 'india_status' %}">India-stats</a></li>
-          <li><a href="{% url 'states_table' %}">States-stats</a></li>
+          <li><a href="{% url 'india_status' %}">India-Stats</a></li>
+          <li><a href="{% url 'states_table' %}">States-Stats</a></li>
           <!-- <li><a href="{% url 'global_status' %}">Global</a></li> -->
           <li><a href="{% url 'helpline' %}">Test Centers</a></li>
-          <li><a href="{% url 'covid19' %}">Covid19</a></li>
+          <li><a href="{% url 'covid19' %}">Covid-19</a></li>
           <li>
             <a id="updateInvoke" class="waves-effect btn white indigo-text">Refresh!</a>
 
@@ -124,11 +133,11 @@
   </div>
 
   <ul class="sidenav" id="mobile-links">
-    <li><a href="{% url 'india_status' %}">India-stats</a></li>
-    <li><a href="{% url 'states_table' %}">States-stats</a></li>
+    <li><a href="{% url 'india_status' %}">India-Stats</a></li>
+    <li><a href="{% url 'states_table' %}">States-Stats</a></li>
     <!-- <li><a href="{% url 'global_status' %}">Global</a></li> -->
     <li><a href="{% url 'helpline' %}">Test Centers</a></li>
-    <li><a href="{% url 'covid19' %}">Covid19</a></li>
+    <li><a href="{% url 'covid19' %}">Covid-19</a></li>
     <li><a id="updateInvoke2" class="waves-effect btn white indigo-text">Refresh!</a></li>
   </ul>
 
@@ -249,10 +258,14 @@
 </script>
 
 
+<main>
+  {% block content %}
+  {% endblock %}
+
+</main>
 
 
-{% block content %}
-{% endblock %}
+
 
 
 
@@ -287,8 +300,6 @@
 
   </script>
   <!-- Counter -->
-</body>
-
 
 
 
@@ -304,8 +315,8 @@
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text"></h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="{% url 'states_table' %}">States-stats</a></li>
-                  <li><a class="grey-text text-lighten-3" href="{% url 'covid19' %}">Covid19</a></li>
+                  <li><a class="grey-text text-lighten-3" href="{% url 'states_table' %}">States-Stats</a></li>
+                  <li><a class="grey-text text-lighten-3" href="{% url 'covid19' %}">Covid-19</a></li>
                   <li><a class="grey-text text-lighten-3" href="{% url 'helpline' %}">Test Centers</a></li>
                 </ul>
               </div>
@@ -319,6 +330,6 @@
           </div>
         </footer>
 
-
+</body>
 
 </html>

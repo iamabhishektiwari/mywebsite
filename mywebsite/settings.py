@@ -23,7 +23,7 @@ MAIN_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'z%8^b9jlen(tn-bb#(7qdy8vhfm&t)wcy39d58fq&)r(ws)ghv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False 
+DEBUG = True 
 
 ALLOWED_HOSTS = ['localhost','covidtracks.in','www.covidtracks.in','http://127.0.0.1:8000/',]
 

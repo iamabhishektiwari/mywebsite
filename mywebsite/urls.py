@@ -16,6 +16,7 @@ urlpatterns = [
     path('ajax/get-details', iv.GetdistrictResult,name='update_status'),
     path('sitemap.xml', iv.Sitemap.as_view(),name='sitemap'),
     path('BingSiteAuth.xml', iv.Bingsitemap.as_view(),name='sitemap'),
+    path('testing', iv.testing.as_view(),name='testing'),
 
 
     # path('global/', include('globalRecords.urls')),

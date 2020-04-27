@@ -13,6 +13,19 @@ THIS_FOLDER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 
+class testing(View):
+    mytemplate = 'testing.html'
+    unsupported = 'Unsupported operation'
+    def get(self, request):
+
+        context = {
+            'message':"Success",
+        }
+        return render(request,self.mytemplate,context)
+
+    def post(self, request):
+        return HttpResponse(self.unsupported)
+
 class Sitemap(View):
     mytemplate = 'sitemap.xml'
     unsupported = 'Unsupported operation'
