@@ -30,7 +30,7 @@
         <div class="col s6 m4 l2">
           <div class="card ">
             <div class="card-content shadowblue">
-              <span class="card-title counter-count">{{ state.confirmed }}</span>
+              <span class="card-title counter-count purple-text">{{ state.confirmed }}</span>
               <p>
                 Confirmed Cases <br>
               </p>
@@ -41,7 +41,7 @@
         <div class="col s6 m4 l2">
           <div class="card">
             <div class="card-content shadowpurple">
-              <span class="card-title counter-count">{{ state.active }}</span>
+              <span class="card-title counter-count indigo-text">{{ state.active }}</span>
               <p>
                 Active Cases <br>
               </p>
@@ -52,7 +52,7 @@
         <div class="col s6 m4 l2">
           <div class="card">
             <div class="card-content shadowgreen">
-              <span class="card-title counter-count">{{ state.recovered}}</span>
+              <span class="card-title counter-count green-text">{{ state.recovered}}</span>
               <p>
                 Recovered <br>
 
@@ -64,7 +64,7 @@
         <div class="col s6 m4 l2">
           <div class="card">
             <div class="card-content shadowred">
-              <span class="card-title counter-count">{{ state.deaths}}</span>
+              <span class="card-title counter-count deathtext">{{ state.deaths}}</span>
               <p>
                 Deaths <br>
               </p>
@@ -75,7 +75,7 @@
         <div class="col s6 m4 l2">
           <div class="card">
             <div class="card-content shadowred">
-              <span class="card-title"> {{ state.recovered|div:state.confirmed|mul:100|floatformat:2 }}%</span>
+              <span class="card-title green-text"> {{ state.recovered|div:state.confirmed|mul:100|floatformat:2 }}%</span>
               <p>
                 Recovery Rate <br>
               </p>
@@ -85,7 +85,7 @@
 
         <div class="col s6 m4 l2">
           <div class="card">
-            <div class="card-content shadowred">
+            <div class="card-content deathtext">
               <span class="card-title">{{ state.deaths|div:state.confirmed|mul:100|floatformat:2 }}%</span>
               <p>
                 Death Rate <br>
@@ -121,7 +121,7 @@
         </div>
 
       </div>
-      
+
         <div class="container width90">
           <div class="col s12 m6 l6">
         <div class="row padding_zero">
@@ -142,7 +142,7 @@
           <tbody id="district">
             {% for district in districts %}
             <tr>
-              <td><a href="#">{{ district.name }}</a></td>
+              <td><a class="black-text" href="#">{{ district.name }}</a></td>
               <td>{{ district.confirmed }}</td>
             </tr>
             {% endfor %}

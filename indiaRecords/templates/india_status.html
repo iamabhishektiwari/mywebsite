@@ -102,7 +102,18 @@ geochart.draw(data, opts);
           </div>
         </div>
 
+        <div class="col s6 m4 l2">
+          <div class="card ">
+            <div class="card-content shadowteal">
+              <span class="card-title green-text">{{ indrecovered|div:indconfirmed|mul:100|floatformat:2 }}%</span>
+              <p>
+                Recovery Rate <br>
 
+              </p>
+            </div>
+          </div>
+        </div>
+        
         <div class="col s6 m4 l2">
           <div class="card">
             <div class="card-content shadowindigo">
@@ -114,18 +125,6 @@ geochart.draw(data, opts);
           </div>
         </div>
 
-
-        <div class="col s6 m4 l2">
-          <div class="card ">
-            <div class="card-content shadowteal">
-              <span class="card-title blue-text">{{ indrecovered|div:indconfirmed|mul:100|floatformat:2 }}%</span>
-              <p>
-                Recovery Rate <br>
-
-              </p>
-            </div>
-          </div>
-        </div>
 
 
     </div>
@@ -157,18 +156,18 @@ geochart.draw(data, opts);
 
       </div>
       <div class="col s12 m6 l7">
-      
+
        <div class="row padding_zero">
          <div class="col s6">
            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for State.." title="Type in a State">
          </div>
        </div>
-       
-            
-      
-         
-       
-     
+
+
+
+
+
+
 
 
 
