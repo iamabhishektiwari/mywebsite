@@ -348,6 +348,8 @@ def updatedistrictdata(datas):
     print("entering district data update")
     for data in datas:
         st = data['state']
+        if(st=='Dadra and Nagar Haveli and Daman and Diu'):
+            st='Dadra and Nagar Haveli'
         state = State.objects.get(name=st)
         distdata = data['districtData']
         for dist in distdata:
@@ -497,6 +499,7 @@ def updatestatetimeseries(datas):
 
 def updatestatewise(datas):
     print("entering state-wise data update")
+
     for data in datas:
         if(data['state']=="Total"):
             indactive = ImpParam.objects.get(key='indactive')
@@ -526,7 +529,10 @@ def updatestatewise(datas):
             inddeltarecovered.save()
             indlastupdatetime.save()
         else:
-            st = State.objects.get(name=data['state'])
+            stname = data['state']
+            if(stname=='Dadra and Nagar Haveli and Daman and Diu'):
+                stname='Dadra and Nagar Haveli'
+            st = State.objects.get(name=stname)
 
             st.confirmed = data['confirmed']
             st.deaths = data['deaths']
