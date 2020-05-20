@@ -8,9 +8,9 @@ url_district_wise = 'https://api.covid19india.org/v2/state_district_wise.json'
 url_resource = 'https://api.covid19india.org/resources/resources.json'
 url_state_timeseries = 'https://api.covid19india.org/states_daily.json'
 #
-stateinfo ={}
-with open('stateinfo.json') as f:
-  stateinfo = json.load(f)
+# stateinfo ={}
+# with open('stateinfo.json') as f:
+#   stateinfo = json.load(f)
 
 
 
