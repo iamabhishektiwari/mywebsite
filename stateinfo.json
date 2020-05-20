@@ -30,13 +30,14 @@
 		"West Bengal": "IN-WB",
 		"Andaman and Nicobar Islands": "IN-AN",
 		"Chandigarh": "IN-CH",
-		"Dadra and Nagar Haveli": "IN-DN",
+		"Dadra and Nagar Haveli and Daman and Diu": "IN-DN",
 		"Daman and Diu": "IN-DD",
 		"Delhi": "IN-DL",
 		"Jammu and Kashmir": "IN-JK",
 		"Ladakh": "IN-LA",
 		"Lakshadweep": "IN-LD",
-		"Puducherry": "IN-PY"
+		"Puducherry": "IN-PY",
+		"State Unassigned":"ST-UN"
 
 	},
 	"phoneno": {

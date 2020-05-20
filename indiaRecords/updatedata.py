@@ -8,9 +8,9 @@ url_district_wise = 'https://api.covid19india.org/v2/state_district_wise.json'
 url_resource = 'https://api.covid19india.org/resources/resources.json'
 url_state_timeseries = 'https://api.covid19india.org/states_daily.json'
 #
-# stateinfo ={}
-# with open('stateinfo.json') as f:
-#   stateinfo = json.load(f)
+stateinfo ={}
+with open('stateinfo.json') as f:
+  stateinfo = json.load(f)
 
 
 
@@ -171,7 +171,11 @@ def saveresourcedata(datas):
     for data in datas:
         state1 = data['state']
         state1 = state1.replace('&','and')
-        state = difflib.get_close_matches(state1, lststatenames)[0]
+        #print(state1)
+        tmpstatelist = difflib.get_close_matches(state1, lststatenames)
+        if(len(tmpstatelist)<1):
+            continue
+        state = tmpstatelist[0]
         print(state1,state)
         if(data['category'] == "CoVID-19 Testing Lab"):
             st12 = State.objects.get(name=state)
@@ -348,8 +352,6 @@ def updatedistrictdata(datas):
     print("entering district data update")
     for data in datas:
         st = data['state']
-        if(st=='Dadra and Nagar Haveli and Daman and Diu'):
-            st='Dadra and Nagar Haveli'
         state = State.objects.get(name=st)
         distdata = data['districtData']
         for dist in distdata:
@@ -530,8 +532,7 @@ def updatestatewise(datas):
             indlastupdatetime.save()
         else:
             stname = data['state']
-            if(stname=='Dadra and Nagar Haveli and Daman and Diu'):
-                stname='Dadra and Nagar Haveli'
+
             st = State.objects.get(name=stname)
 
             st.confirmed = data['confirmed']
