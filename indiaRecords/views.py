@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View
 from .updatedata import write, dataupdate
 import random
-from .models import IndiaTimeSeries, State, ImpParam, District,GovernmentHelpline,TestCenters,ConfirmedTimeSeriesState,RecoveredTimeSeriesState,DeathsTimeSeriesState
+from .models import UserData, IndiaTimeSeries, State, ImpParam, District,GovernmentHelpline,TestCenters,ConfirmedTimeSeriesState,RecoveredTimeSeriesState,DeathsTimeSeriesState
 from django.http import JsonResponse
 import time
 import difflib
@@ -11,6 +11,13 @@ import os
 # Create your views here.
 THIS_FOLDER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+from django.forms import ModelForm
+from django.shortcuts import redirect
+
+class ContactForm(ModelForm):
+    class Meta:
+        model = UserData
+        fields = ['contact']
 
 
 class testing(View):
@@ -19,12 +26,25 @@ class testing(View):
     def get(self, request):
 
         context = {
-            'message':"Success",
+            'message':""
         }
         return render(request,self.mytemplate,context)
 
     def post(self, request):
-        return HttpResponse(self.unsupported)
+        print("I m here")
+        con = request.POST.get('contact')
+        if(con):
+            ud = UserData()
+            ud.contact = con;
+            ud.save();
+            context = {
+                'message':"Thanks for Submitting",
+
+            }
+            response = redirect('/')
+            return response
+        else:
+            return render(request,self.mytemplate)
 
 class Sitemap(View):
     mytemplate = 'sitemap.xml'
@@ -52,9 +72,6 @@ class Bingsitemap(View):
 
     def post(self, request):
         return HttpResponse(self.unsupported)
-
-
-
 
 
 
@@ -250,6 +267,15 @@ def Update(request):
         "message":msg,
     }
     return JsonResponse(data)
+
+def saveEmail(request):
+    print("here I am")
+    data = {
+        "message":"Thanks for subscribing"
+    }
+    return JsonResponse(data)
+    # dt = UserData()
+    # dt.contact =
 
 
 

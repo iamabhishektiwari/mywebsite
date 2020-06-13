@@ -3,6 +3,11 @@ from datetime import datetime
 
 # Create your models here.
 
+class UserData(models.Model):
+    contact = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.contact
 
 
 class State(models.Model):

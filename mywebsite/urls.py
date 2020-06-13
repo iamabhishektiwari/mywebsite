@@ -17,6 +17,7 @@ urlpatterns = [
     path('sitemap.xml', iv.Sitemap.as_view(),name='sitemap'),
     path('BingSiteAuth.xml', iv.Bingsitemap.as_view(),name='sitemap'),
     path('testing', iv.testing.as_view(),name='testing'),
+    path('ajax/save-email', iv.saveEmail,name='saveEmail'),
 
 
     # path('global/', include('globalRecords.urls')),

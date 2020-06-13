@@ -107,28 +107,36 @@
 main {
     flex: 1 0 auto;
 }
+
 </style>
 <body>
 
   <div class="navbar">
     <nav class="nav-wrapper indigo">
-      <div class="container">
-        <a href="{% url 'india_status' %}" class="brand-logo">Covid19Track</a>
+      <div class="container widthextra">
+        <a href="{% url 'india_status' %}" class="brand-logo">Covid19-Tracker</a>
+      </div>
         <a href="#" class="sidenav-trigger" data-target="mobile-links">
           <i class="material-icons">menu</i>
         </a>
         <ul class="right hide-on-med-and-down">
+
+
+
           <li><a href="{% url 'india_status' %}">India-Stats</a></li>
+
           <li><a href="{% url 'states_table' %}">States-Stats</a></li>
           <!-- <li><a href="{% url 'global_status' %}">Global</a></li> -->
           <li><a href="{% url 'helpline' %}">Test Centers</a></li>
           <li><a href="{% url 'covid19' %}">Covid-19</a></li>
+          <li><a id="updateInvoke" class="waves-effect btn white indigo-text">Refresh!</a></li>
           <li>
-            <a id="updateInvoke" class="waves-effect btn white indigo-text">Refresh!</a>
-
+            <a class="waves-effect btn white indigo-text pdm" href="{% url 'testing' %}">
+              <i class="material-icons right">shopping_cart</i>
+              Shop Essentials
+            </a>
           </li>
         </ul>
-      </div>
     </nav>
   </div>
 
@@ -138,7 +146,7 @@ main {
     <!-- <li><a href="{% url 'global_status' %}">Global</a></li> -->
     <li><a href="{% url 'helpline' %}">Test Centers</a></li>
     <li><a href="{% url 'covid19' %}">Covid-19</a></li>
-    <li><a id="updateInvoke2" class="waves-effect btn white indigo-text">Refresh!</a></li>
+    <li><a id="updateInvoke2" class="waves-effect btn indigo white-text">Refresh!</a></li>
   </ul>
 
 
@@ -178,17 +186,6 @@ main {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 <script type="text/javascript">
 
 
@@ -202,6 +199,9 @@ main {
     });
 
   });
+
+
+
 
   $("#updateInvoke2").click(function () {
 
@@ -312,7 +312,7 @@ main {
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
-                <h5 class="white-text">Covid19Track</h5>
+                <h5 class="white-text">Covid19-Tracker</h5>
                 <p class="grey-text text-lighten-4">This website is created and maintained by
                 <a href="https://www.linkedin.com/in/abhishek-tiwari-b03614112/" target="_blank" class="red_text">
                   <strong>
