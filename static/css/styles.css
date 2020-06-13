@@ -1,3 +1,4 @@
+{% load static %}
 submit@import url(http://fonts.googleapis.com/css?family=Open+Sans:700,400);
 body {
 	color:#FFF;
@@ -11,7 +12,6 @@ body {
 	margin:0;
 	color:#000;
 	background-size:cover;
-	background:url('../images/swirl_pattern.png') top left repeat;
 }
 .ie body {
 	filter: dropshadow(color=#000000, offx=0, offy=1);
