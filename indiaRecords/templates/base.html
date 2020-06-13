@@ -113,9 +113,15 @@ main {
 
   <div class="navbar">
     <nav class="nav-wrapper indigo">
-      <div class="container widthextra">
+      <div class="container widthextra hide-on-small-only">
         <a href="{% url 'india_status' %}" class="brand-logo">Covid19-Tracker</a>
       </div>
+
+      <div class="hide-on-med-and-up">
+        <a href="{% url 'india_status' %}" class="brand-logo">Covid19-Tracker</a>
+      </div>
+
+
         <a href="#" class="sidenav-trigger" data-target="mobile-links">
           <i class="material-icons">menu</i>
         </a>
@@ -129,7 +135,8 @@ main {
           <!-- <li><a href="{% url 'global_status' %}">Global</a></li> -->
           <li><a href="{% url 'helpline' %}">Test Centers</a></li>
           <li><a href="{% url 'covid19' %}">Covid-19</a></li>
-          <li><a id="updateInvoke" class="waves-effect btn white indigo-text">Refresh!</a></li>
+
+          <li ><a id="updateInvoke" class="waves-effect btn white indigo-text">Refresh!</a></li>
           <li>
             <a class="waves-effect btn white indigo-text pdm" href="{% url 'testing' %}">
               <i class="material-icons right">shopping_cart</i>
