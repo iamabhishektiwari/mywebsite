@@ -7,7 +7,7 @@ India-Status
 {% load static %}
 
 {% block content %}
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript">
 
 google.load('visualization', '1', {'packages': ['geochart']});
@@ -157,10 +157,22 @@ geochart.draw(data, opts);
           </div>
         </div>
 
+        <div class="col s12">
+          <a href="https://web.whatsapp.com/send?text=*Latest%20Covid19%20Data (INDIA)*%20%0ATotal%20Cases:%20{{ indconfirmed }},%0AActive%20Cases:%20{{ indactive }},%0D%0ARecovered%20Cases:%20{{ indrecovered }},%0D%0ARecovery%20Rate:%20{{ indrecovered|div:indconfirmed|mul:100|floatformat:2 }}%%0D%0APowered by: https://www.covidtracks.in/" target="_blank">
+            <i class="fa fa-whatsapp" style="font-size:36px">
+            </i></a>
 
+
+          <br>
+          <small class="indigo-text">Share with friends</small>
+
+        </div>
 
     </div>
     <!-- row -->
+
+
+
     </div>
     <!-- heading end -->
 
